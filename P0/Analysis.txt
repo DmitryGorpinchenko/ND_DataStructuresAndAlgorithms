@@ -1,0 +1,31 @@
+Notation:
+    N - number of records in texts.csv
+    M - number of records in calls.csv
+
+Task0.py
+    Complexity: O(1)
+    Explanation: solution always accesses 2 records regardless of the number of records in any of the datasets.
+
+Task1.py
+    Complexity: O(N + M)
+    Explanation: solution traverses both texts.csv and calls.csv datasets to create 2 sets of tel. numbers found in each of them and then makes union of these 2 sets.
+
+Task2.py
+    Complexity: O(M)
+    Explanation: solution traverses calls.csv dataset to build dictionary mapping tel. numbers to time in seconds they spent in calls and then finds tel. number with maximum time.
+
+Task3.py
+    Complexity: O(M*log(M))
+    Explanation: solution traverses calls.csv dataset to build dictionary mapping tel. number codes
+                 to numbers of times tel. numbers having these codes are called by tel. numbers having specific area code (resulting in O(M) complexity).
+                 Then, from set of keys obtained from this dictionary, creates sorted list of corresponding tel. number codes (resulting in O(M*log(M)) complexity).
+                 Then, calculates necessary percentage (resulting in O(1) compexity thanks to the precomputed total count of calls). 
+                 After simplification, total complexity obtained to be O(M*log(M)).
+
+Task4.py
+    Complexity: O(N + M*log(M))
+    Explanation: solution traverses both texts.csv and calls.csv datasets to create necessary sets of tel. numbers from each of them (resulting in O(N + M) complexity).
+                 Then performs necessary union and difference operations on those sets (again resulting in O(N + M) complexity) to obtain set of possible telemarketers
+                 (note, that this set will have no more than M elements because there must be no telemarketers in texts.csv dataset according to the task definition).
+                 Then, from set of possible telemarketers creates sorted list of tel. numbers (resulting in O(M*log(M)) complexity).
+                 After simplification, total complexity obtained to be O(N + M*log(M)).
